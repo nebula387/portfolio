@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ivan Snigirev — AI & Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0c0c10;
+    --surface: #131318;
+    --surface2: #1c1c24;
+    --border: #2a2a38;
+    --border-hover: #44445a;
+    --text: #e4e4f0;
+    --muted: #7a7a9a;
+    --hint: #4a4a6a;
+    --accent: #5b8def;
+    --accent-dim: rgba(91,141,239,0.12);
+    --green: #3dd68c;
+    --green-dim: rgba(61,214,140,0.12);
+    --amber: #f0a050;
+    --amber-dim: rgba(240,160,80,0.12);
+    --red: #e05555;
+    --red-dim: rgba(224,85,85,0.10);
+    --radius: 8px;
+    --radius-lg: 12px;
+    --mono: 'JetBrains Mono', monospace;
+    --serif: 'Instrument Serif', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Layout ── */
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ── Nav ── */
+  nav {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    background: rgba(12,12,16,0.92);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .nav-name { font-size: 13px; font-weight: 500; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { font-size: 11px; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: start;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: var(--green);
+    border: 1px solid rgba(61,214,140,0.3);
+    padding: 4px 12px;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+  }
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: .7rem;
+  }
+  .hero h1 em { font-style: italic; font-weight: 600; }
+  .hero-desc {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 500px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: 2rem;
+  }
+  .chip {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .chip.hi { border-color: rgba(91,141,239,0.4); color: var(--accent); }
+  .hero-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hl {
+    font-size: 11px;
+    padding: 9px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: border-color .2s;
+  }
+  .hl:hover { border-color: var(--border-hover); text-decoration: none; }
+  .hl.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .hl.primary:hover { opacity: .88; }
+
+  /* ── Photo placeholder ── */
+  .photo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  /* =====================================================================
+     ФОТО — замени src на путь к своему фото, например: src="photo.jpg"
+     Рекомендуемый размер: 200×200px или больше, квадратное
+     ===================================================================== */
+  .photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    display: block;
+  }
+  .photo-placeholder {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--hint);
+    font-size: 11px;
+    text-align: center;
+    padding: 1rem;
+  }
+  .photo-placeholder svg { opacity: .4; }
+  .photo-note { font-size: 10px; color: var(--hint); text-align: center; max-width: 120px; }
+
+  /* ── Sections ── */
+  .sec { padding: 3.5rem 0 0; }
+  .sec-label {
+    font-size: 10px;
+    color: var(--hint);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sec-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Cards grid ── */
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.3rem;
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: var(--border-hover); transform: translateY(-1px); }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: .9rem;
+    gap: 8px;
+  }
+  .card-top-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+
+  .badge { font-size: 10px; padding: 3px 9px; border-radius: 4px; white-space: nowrap; }
+  .b-agent { background: var(--accent-dim); color: var(--accent); }
+  .b-voice { background: var(--amber-dim); color: var(--amber); }
+  .b-ml    { background: var(--green-dim); color: var(--green); }
+  .b-sec   { background: var(--red-dim); color: var(--red); }
+
+  .live { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--green); }
+  .live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); }
+  .wip { font-size: 10px; color: var(--amber); }
+  .note { font-size: 10px; color: var(--hint); }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: .4rem;
+  }
+  .card-desc { font-size: 12px; color: var(--muted); line-height: 1.75; margin-bottom: 1rem; }
+
+  .metrics { display: flex; gap: 18px; margin-bottom: 1rem; }
+  .metric-val { font-size: 15px; font-weight: 500; color: var(--text); }
+  .metric-lbl { font-size: 10px; color: var(--hint); margin-top: 1px; }
+
+  .pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .pill {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: var(--surface2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .card-link { font-size: 11px; color: var(--accent); display: inline-block; margin-top: .8rem; }
+
+  /* ── Site card ── */
+  .site-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.3rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .site-card h3 { font-family: var(--serif); font-size: 16px; margin-bottom: .3rem; }
+  .site-card p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .site-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: .6rem; }
+  .site-tag {
+    font-size: 10px; padding: 2px 8px; border-radius: 3px;
+    background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(240,160,80,.25);
+  }
+
+  /* ── Certificates ── */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  .cert {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: .9rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: border-color .2s;
+  }
+  .cert:hover { border-color: var(--border-hover); }
+  .cert-icon {
+    width: 36px; height: 36px;
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 11px; font-weight: 500; letter-spacing: -.3px;
+  }
+  .ci-green { background: var(--green-dim); color: var(--green); }
+  .ci-blue  { background: var(--accent-dim); color: var(--accent); }
+  .ci-amber { background: var(--amber-dim); color: var(--amber); }
+  .ci-gray  { background: var(--surface2); color: var(--muted); }
+
+  .cert-title { font-size: 12px; font-weight: 500; margin-bottom: 2px; line-height: 1.4; }
+  .cert-meta  { font-size: 10px; color: var(--muted); }
+  .cert-link  { font-size: 10px; color: var(--accent); display: inline-block; margin-top: 5px; }
+
+  /* ── Skills ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+  .skill-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+  }
+  .skill-box h4 {
+    font-size: 10px; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--hint); margin-bottom: .7rem;
+  }
+  .skill-box ul { list-style: none; font-size: 12px; color: var(--muted); line-height: 2.1; }
+
+  /* ── Timeline ── */
+  .timeline { display: flex; flex-direction: column; gap: 10px; }
+  .tl {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.3rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+  }
+  .tl-role { font-size: 13px; font-weight: 500; }
+  .tl-co   { font-size: 12px; color: var(--accent); margin-bottom: .3rem; }
+  .tl-desc { font-size: 12px; color: var(--muted); line-height: 1.65; grid-column: 1 / -1; }
+  .tl-date { font-size: 10px; color: var(--hint); text-align: right; white-space: nowrap; padding-top: 3px; }
+
+  /* ── Contact ── */
+  .contact-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .ci-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: .75rem 1.1rem;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex; gap: 8px;
+  }
+  .ci-item strong { color: var(--text); font-weight: 500; }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+  }
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  footer p { font-size: 11px; color: var(--hint); }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .photo-wrap { display: none; }
+    .grid2 { grid-template-columns: 1fr; }
+    .grid3 { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="wrap">
+    <span class="nav-name">Ivan Snigirev</span>
+    <div class="nav-links">
+      <a href="#projects">projects</a>
+      <a href="#certs">certificates</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+
+      <!-- Left: text -->
+      <div>
+        <div class="status">
+          <div class="status-dot"></div>
+          available for remote work
+        </div>
+        <h1>Ivan Snigirev —<br><em>AI &amp; Data Engineer</em></h1>
+        <p class="hero-desc">
+          I build production AI systems: voice agents, multi-model Telegram assistants,
+          document analysis bots, and ML pipelines for security and medical classification.
+          Background in network infrastructure and industrial automation.
+        </p>
+        <div class="chips">
+          <span class="chip hi">Python</span>
+          <span class="chip hi">LLM / AI Agents</span>
+          <span class="chip hi">Machine Learning</span>
+          <span class="chip hi">Voice AI</span>
+          <span class="chip">SQL</span>
+          <span class="chip">PyTorch</span>
+          <span class="chip">LightGBM</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">aiogram 3</span>
+          <span class="chip">OpenRouter</span>
+          <span class="chip">Linux / VPS</span>
+          <span class="chip">English B2</span>
+        </div>
+        <div class="hero-links">
+          <a class="hl primary" href="https://github.com/nebula387" target="_blank">GitHub ↗</a>
+          <a class="hl" href="http://grip2peak.com" target="_blank">grip2peak.com ↗</a>
+        </div>
+      </div>
+
+      <!-- Right: photo -->
+      <div class="photo-wrap">
+        <!--
+          ════════════════════════════════════════════
+          КАК ДОБАВИТЬ ФОТО:
+          1. Удали блок <div class="photo-placeholder">...</div>
+          2. Раскомментируй строку с <img>
+          3. Замени "photo.jpg" на имя своего файла
+          4. Положи фото рядом с portfolio.html
+             или укажи путь, например: "assets/photo.jpg"
+          Рекомендуемый размер: минимум 200×200px, квадратное
+          ════════════════════════════════════════════
+        -->
+        <!-- <img class="photo" src="photo.jpg" alt="Ivan Snigirev"> -->
+
+        <div class="photo-placeholder">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          your photo here
+        </div>
+        <p class="photo-note">replace placeholder with photo.jpg</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Projects ── -->
+<div id="projects"></div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">ai agents</div>
+    <div class="grid2">
+
+      <div class="card">
+        <div class="card-top">
+          <span class="badge b-agent">Telegram Agent</span>
+          <div class="card-top-right">
+            <div class="live"><div class="live-dot"></div>live</div>
+            <span class="note">free-tier models, may be slow</span>
+          </div>
+        </div>
+        <div class="card-title">Pro Assistant Bot</div>
+        <p class="card-desc">Multi-model assistant with automatic topic routing. Classifies each message and selects the best model: Qwen3 235B for code, Gemini 2.5 Pro for legal, Gemini Flash for general. Voice input via Groq Whisper, real-time web search, weather, context memory.</p>
+        <div class="pills">
+          <span class="pill">aiogram 3</span><span class="pill">OpenRouter</span><span class="pill">Qwen3 235B</span>
+          <span class="pill">Groq Whisper</span><span class="pill">Tavily</span><span class="pill">VPS + systemd</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/pro-bot" target="_blank">github.com/nebula387/pro-bot ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="badge b-agent">Telegram Agent</span>
+          <div class="card-top-right">
+            <div class="live"><div class="live-dot"></div>live</div>
+            <span class="note">free-tier models, may be slow</span>
+          </div>
+        </div>
+        <div class="card-title">Doc Agent — Legal Assistant</div>
+        <p class="card-desc">Document analysis agent for legal texts. Accepts PDF, DOCX, TXT (up to 5 files at once), answers questions about content, cross-references with live web search. Auto-fallback across 5 free models. Switchable between fast and deep-reasoning modes.</p>
+        <div class="pills">
+          <span class="pill">aiogram 3</span><span class="pill">OpenRouter</span><span class="pill">Nemotron 120B</span>
+          <span class="pill">Llama 4</span><span class="pill">PyMuPDF</span><span class="pill">Tavily</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/doc-agent" target="_blank">github.com/nebula387/doc-agent ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <span class="badge b-voice">Voice Agent</span>
+          <span class="wip">in development</span>
+        </div>
+        <div class="card-title">ScamGuard — AI Call Filter</div>
+        <p class="card-desc">Voice AI agent that screens all incoming calls in real time. Legitimate callers forwarded transparently. Detected scammers are handed to a "confused elderly woman" persona — keeps them occupied up to 10 min without revealing real data. Russian operator setup included.</p>
+        <div class="pills">
+          <span class="pill">Vapi</span><span class="pill">Claude Sonnet</span><span class="pill">ElevenLabs</span>
+          <span class="pill">Node.js</span><span class="pill">Fastify</span><span class="pill">Railway</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/phone_agent" target="_blank">github.com/nebula387/phone_agent ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="badge b-sec">ML · Security</span></div>
+        <div class="card-title">Network Intrusion Detection</div>
+        <p class="card-desc">Binary classification of network traffic on KDD Cup 99. Compared Logistic Regression, Decision Tree, Random Forest. TCP S0/REJ flags and ICMP identified as strongest attack signals. Includes actionable IDS deployment recommendations.</p>
+        <div class="metrics">
+          <div><div class="metric-val">~1.00</div><div class="metric-lbl">ROC-AUC</div></div>
+          <div><div class="metric-val">~0.99</div><div class="metric-lbl">accuracy</div></div>
+          <div><div class="metric-val">47k</div><div class="metric-lbl">samples</div></div>
+        </div>
+        <div class="pills">
+          <span class="pill">RandomForest</span><span class="pill">scikit-learn</span>
+          <span class="pill">KDD Cup 99</span><span class="pill">pandas</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/cybersecurity" target="_blank">github.com/nebula387/cybersecurity ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── ML Research ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">ml research</div>
+    <div class="grid2">
+
+      <div class="card">
+        <div class="card-top"><span class="badge b-ml">ML · Healthcare</span></div>
+        <div class="card-title">Diabetes Risk Prediction</div>
+        <p class="card-desc">End-to-end screening pipeline with threshold optimization. Prioritized recall to minimize missed diagnoses. Full EDA with Cramér's V analysis, sklearn Pipeline with ColumnTransformer.</p>
+        <div class="metrics">
+          <div><div class="metric-val">0.91</div><div class="metric-lbl">ROC-AUC</div></div>
+          <div><div class="metric-val">0.92</div><div class="metric-lbl">recall</div></div>
+          <div><div class="metric-val">0.90</div><div class="metric-lbl">accuracy</div></div>
+        </div>
+        <div class="pills">
+          <span class="pill">LightGBM</span><span class="pill">scikit-learn</span>
+          <span class="pill">threshold opt.</span><span class="pill">Matplotlib</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/Diabetes_analysis_lightgbm" target="_blank">github.com/nebula387/Diabetes_analysis_lightgbm ↗</a>
+      </div>
+
+      <div class="card">
+        <div class="card-top"><span class="badge b-ml">ML · Medical</span></div>
+        <div class="card-title">Spine Anomaly Classification</div>
+        <p class="card-desc">Spinal pathology classification from biomechanical parameters. VIF analysis revealed critical multicollinearity — solved with RobustScaler + PCA pipeline. PCA outperformed Random Forest while remaining clinically interpretable.</p>
+        <div class="metrics">
+          <div><div class="metric-val">0.88</div><div class="metric-lbl">ROC-AUC</div></div>
+          <div><div class="metric-val">0.87</div><div class="metric-lbl">accuracy</div></div>
+        </div>
+        <div class="pills">
+          <span class="pill">PCA + LogReg</span><span class="pill">RandomForest</span>
+          <span class="pill">RobustScaler</span><span class="pill">VIF</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/Analysis_ml_spine" target="_blank">github.com/nebula387/Analysis_ml_spine ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Website ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">website</div>
+    <div class="site-card">
+      <div>
+        <h3>grip2peak.com</h3>
+        <p>Personal project — AI document assistant and a game currently in development.<br>Built independently: design, backend, and deployment.</p>
+        <div class="site-tags">
+          <span class="site-tag">game in dev</span>
+          <span class="site-tag">doc assistant</span>
+          <span class="site-tag">self-built</span>
+        </div>
+      </div>
+      <a class="hl" href="http://grip2peak.com" target="_blank">visit ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Certificates ── -->
+<div id="certs"></div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">certificates — 7</div>
+    <div class="certs-grid">
+
+      <div class="cert">
+        <div class="cert-icon ci-green">DS</div>
+        <div>
+          <div class="cert-title">Introduction to Data Science &amp; ML</div>
+          <div class="cert-meta">Stepik · Bioinformatics Institute · 2024</div>
+          <a class="cert-link" href="https://drive.google.com/file/d/1B9Vm-OJkUQ5GI_1vhV4f_W4wDns4dJEN/view?usp=sharing" target="_blank">view certificate ↗</a>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="cert-icon ci-blue">ML</div>
+        <div>
+          <div class="cert-title">Good AI. Part 1 — Machine Learning</div>
+          <div class="cert-meta">Stepik · 2024</div>
+          <a class="cert-link" href="https://drive.google.com/file/d/1jZ_MfRXq5g_gncPrC-ZgDMMGjb_06l7q/view?usp=sharing" target="_blank">view certificate ↗</a>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="cert-icon ci-blue">PT</div>
+        <div>
+          <div class="cert-title">Good AI. Part 2 — Neural Networks &amp; PyTorch</div>
+          <div class="cert-meta">Stepik · 2024</div>
+          <a class="cert-link" href="https://drive.google.com/file/d/1yMMs-B116WJaeK7YTbJnM-JQAGSIoQHN/view?usp=sharing" target="_blank">view certificate ↗</a>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="cert-icon ci-amber">PY</div>
+        <div>
+          <div class="cert-title">Good, good Python</div>
+          <div class="cert-meta">Stepik · Balakirev · 2024</div>
+          <a class="cert-link" href="https://drive.google.com/file/d/18USuKdcVi-hfoknyuTvDv-MEPMN5r-Re/view?usp=sharing" target="_blank">view certificate ↗</a>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="cert-icon ci-amber">OOP</div>
+        <div>
+          <div class="cert-title">Good, good Python OOP</div>
+          <div class="cert-meta">Stepik · Balakirev · 2024</div>
+          <a class="cert-link" href="https://drive.google.com/file/d/1eDI1A1qZltvKgyE3dY4deR2qr6_S2wQ-/view?usp=sharing" target="_blank">view certificate ↗</a>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="cert-icon ci-gray">SQL</div>
+        <div>
+          <div class="cert-title">Interactive SQL Simulator</div>
+          <div class="cert-meta">Stepik · 2024</div>
+          <a class="cert-link" href="https://drive.google.com/file/d/1tU8Aqndw3OTFnaCTEEztA3TK-BG_O-Kd/view?usp=sharing" target="_blank">view certificate ↗</a>
+        </div>
+      </div>
+
+      <div class="cert">
+        <div class="cert-icon ci-gray">CT</div>
+        <div>
+          <div class="cert-title">Critical Thinking</div>
+          <div class="cert-meta">Stepik · 2024</div>
+          <a class="cert-link" href="https://drive.google.com/file/d/1qhLZnlUdnjWbey8gBVH0KH3MoKIyI4xv/view?usp=sharing" target="_blank">view certificate ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Skills ── -->
+<div id="skills"></div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">skills</div>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h4>AI / Agents</h4>
+        <ul>
+          <li>LLM routing</li><li>Vapi / Voice AI</li><li>OpenRouter</li>
+          <li>Groq Whisper</li><li>aiogram 3</li><li>Tavily search</li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h4>ML / Data</h4>
+        <ul>
+          <li>LightGBM</li><li>scikit-learn</li><li>PyTorch</li>
+          <li>pandas / NumPy</li><li>EDA</li><li>SQL</li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h4>Engineering</h4>
+        <ul>
+          <li>Python OOP</li><li>Node.js</li><li>FastAPI</li>
+          <li>Linux / VPS</li><li>systemd</li><li>Git</li>
+        </ul>
+      </div>
+      <div class="skill-box">
+        <h4>Domain</h4>
+        <ul>
+          <li>Network security</li><li>Telecom / ISP</li>
+          <li>Industrial automation</li><li>Technical docs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Experience ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">experience</div>
+    <div class="timeline">
+      <div class="tl">
+        <div>
+          <div class="tl-role">Network Engineer</div>
+          <div class="tl-co">ER-Telecom Holding</div>
+        </div>
+        <div class="tl-date">Jun 2024 — present</div>
+        <p class="tl-desc">Technical operations in large-scale ISP infrastructure. Monitoring and analysis of network performance metrics, cross-team engineering collaboration.</p>
+      </div>
+      <div class="tl">
+        <div>
+          <div class="tl-role">Automation Engineer</div>
+          <div class="tl-co">Rosflotservice, Novorossiysk</div>
+        </div>
+        <div class="tl-date">Nov 2020 — Sep 2023</div>
+        <p class="tl-desc">Programming and configuration of industrial automation and safety systems. Technical documentation and diagnostics.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Education ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">education</div>
+    <div class="timeline">
+      <div class="tl">
+        <div>
+          <div class="tl-role">Data Analyst diploma</div>
+          <div class="tl-co">Tomsk State University (TSU)</div>
+        </div>
+        <div class="tl-date">2024</div>
+        <p class="tl-desc">Faculty of Innovative Technologies, data analytics specialization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ── -->
+<div id="contact"></div>
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-label">contact</div>
+    <div class="contact-row">
+      <div class="ci-item">github <strong>nebula387</strong></div>
+      <div class="ci-item">site <strong>grip2peak.com</strong></div>
+      <div class="ci-item">timezone <strong>UTC+3</strong></div>
+      <div class="ci-item">english <strong>B2</strong></div>
+      <div class="ci-item">format <strong>remote only</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="wrap">
+    <p>Ivan Snigirev · AI &amp; Data Engineer · 2025</p>
+    <p>open to freelance &amp; full-time remote</p>
+  </div>
+</footer>
+
+</body>
+</html>
