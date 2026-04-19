@@ -35,12 +35,29 @@
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
+    background: var(--bg) url('back1.jpg') center center / cover no-repeat fixed;
     color: var(--text);
     font-family: var(--mono);
     line-height: 1.6;
     min-height: 100vh;
   }
+
+  /* Stars overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, #fff 1px, transparent 1px),
+      radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
+    background-size: 200px 200px, 350px 350px, 150px 150px;
+    background-position: 0 0, 100px 80px, 60px 140px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  nav, section, footer { position: relative; z-index: 1; }
 
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; }
@@ -104,7 +121,17 @@
     line-height: 1.1;
     margin-bottom: .7rem;
   }
-  .hero h1 em { font-style: italic; font-weight: 600; }
+  .hero h1 em {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.85em;
+    color: var(--text);
+    background: rgba(8,8,12,0.85);
+    padding: 3px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 4px;
+  }
   .hero-desc {
     font-size: 13px;
     color: var(--muted);
@@ -160,8 +187,9 @@
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--border);
+    border: 2px solid var(--border-hover);
     display: block;
+    box-shadow: 0 0 0 4px rgba(12,12,16,0.6), 0 8px 32px rgba(0,0,0,0.5);
   }
   .photo-placeholder {
     width: 160px;
@@ -438,15 +466,7 @@
           Рекомендуемый размер: минимум 200×200px, квадратное
           ════════════════════════════════════════════
         -->
-        <!-- <img class="photo" src="photo.jpg" alt="Ivan Snigirev"> -->
-
-        <div class="photo-placeholder">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-          </svg>
-          your photo here
-        </div>
-        <p class="photo-note">replace placeholder with photo.jpg</p>
+        <img class="photo" src="photo.jpg" alt="Ivan Snigirev">
       </div>
 
     </div>
