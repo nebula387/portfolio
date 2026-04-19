@@ -393,8 +393,8 @@
 
   /* ── Responsive ── */
   @media (max-width: 640px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .photo-wrap { display: none; }
+    .hero-inner { grid-template-columns: 1fr; flex-direction: column-reverse; }
+    .photo-wrap { display: flex; margin-bottom: 1.5rem; }
     .grid2 { grid-template-columns: 1fr; }
     .grid3 { grid-template-columns: 1fr; }
     .nav-links { display: none; }
