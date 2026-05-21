@@ -491,16 +491,21 @@
           <span class="badge b-agent">Telegram Agent</span>
           <div class="card-top-right">
             <div class="live"><div class="live-dot"></div>live</div>
-            <span class="note">free-tier models, may be slow</span>
           </div>
         </div>
-        <div class="card-title">Pro Assistant Bot</div>
-        <p class="card-desc">Multi-model assistant with automatic topic routing. Classifies each message and selects the best model: Qwen3 235B for code, Gemini 2.5 Pro for legal, Gemini Flash for general. Voice input via Groq Whisper, real-time web search, weather, context memory.</p>
-        <div class="pills">
-          <span class="pill">aiogram 3</span><span class="pill">OpenRouter</span><span class="pill">Qwen3 235B</span>
-          <span class="pill">Groq Whisper</span><span class="pill">Tavily</span><span class="pill">VPS + systemd</span>
+        <div class="card-title">Travel Agent</div>
+        <p class="card-desc">AI travel planning bot for budget travelers and digital nomads. Classifies user intent and dispatches specialized sub-agents in parallel: destinations, visas, flights, budgets, itineraries. Interactive Google Maps pins, cost-of-living data for 50+ cities. Production-deployed with Docker + Nginx + SSL, 44 automated tests, zero-downtime deploys.</p>
+        <div class="metrics">
+          <div><div class="metric-val">44</div><div class="metric-lbl">tests</div></div>
+          <div><div class="metric-val">50+</div><div class="metric-lbl">cities</div></div>
+          <div><div class="metric-val">0</div><div class="metric-lbl">downtime deploys</div></div>
         </div>
-        <a class="card-link" href="https://github.com/nebula387/pro-bot" target="_blank">github.com/nebula387/pro-bot ↗</a>
+        <div class="pills">
+          <span class="pill">FastAPI</span><span class="pill">Gemini 2.0 Flash</span><span class="pill">PostgreSQL</span>
+          <span class="pill">Redis</span><span class="pill">Celery</span><span class="pill">Google Maps API</span>
+          <span class="pill">Docker</span><span class="pill">aiogram 3</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/travel-agent" target="_blank">github.com/nebula387/travel-agent ↗</a>
       </div>
 
       <div class="card">
@@ -534,21 +539,6 @@
         <a class="card-link" href="https://github.com/nebula387/phone_agent" target="_blank">github.com/nebula387/phone_agent ↗</a>
       </div>
 
-      <div class="card">
-        <div class="card-top"><span class="badge b-sec">ML · Security</span></div>
-        <div class="card-title">Network Intrusion Detection</div>
-        <p class="card-desc">Binary classification of network traffic on KDD Cup 99. Compared Logistic Regression, Decision Tree, Random Forest. TCP S0/REJ flags and ICMP identified as strongest attack signals. Includes actionable IDS deployment recommendations.</p>
-        <div class="metrics">
-          <div><div class="metric-val">~1.00</div><div class="metric-lbl">ROC-AUC</div></div>
-          <div><div class="metric-val">~0.99</div><div class="metric-lbl">accuracy</div></div>
-          <div><div class="metric-val">47k</div><div class="metric-lbl">samples</div></div>
-        </div>
-        <div class="pills">
-          <span class="pill">RandomForest</span><span class="pill">scikit-learn</span>
-          <span class="pill">KDD Cup 99</span><span class="pill">pandas</span>
-        </div>
-        <a class="card-link" href="https://github.com/nebula387/cybersecurity" target="_blank">github.com/nebula387/cybersecurity ↗</a>
-      </div>
 
     </div>
   </div>
@@ -559,6 +549,27 @@
   <div class="wrap">
     <div class="sec-label">ml research</div>
     <div class="grid2">
+
+      <div class="card">
+        <div class="card-top">
+          <span class="badge b-ml">ML · Forecasting</span>
+          <div class="card-top-right">
+            <div class="live"><div class="live-dot"></div>live</div>
+          </div>
+        </div>
+        <div class="card-title">Weather Forecast Bot</div>
+        <p class="card-desc">XGBoost multi-target model predicting temperature, precipitation, and wind speed for Krasnodar using 20 years of historical data. Production quality gate at MAE &lt; 2°C. Daily Telegram notifications with morning/afternoon/evening breakdowns. Streamlit dashboard with 7-day actuals + forecast overlay. Fully automated via GitHub Actions with hourly data refresh.</p>
+        <div class="metrics">
+          <div><div class="metric-val">&lt;2°C</div><div class="metric-lbl">MAE threshold</div></div>
+          <div><div class="metric-val">20 yr</div><div class="metric-lbl">training data</div></div>
+          <div><div class="metric-val">24 h</div><div class="metric-lbl">forecast horizon</div></div>
+        </div>
+        <div class="pills">
+          <span class="pill">XGBoost</span><span class="pill">Open-Meteo API</span><span class="pill">Streamlit</span>
+          <span class="pill">GitHub Actions</span><span class="pill">Telegram Bot</span><span class="pill">pandas</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/weather-forecast-ml" target="_blank">github.com/nebula387/weather-forecast-ml ↗</a>
+      </div>
 
       <div class="card">
         <div class="card-top"><span class="badge b-ml">ML · Healthcare</span></div>
@@ -618,7 +629,7 @@
 <div id="certs"></div>
 <section class="sec">
   <div class="wrap">
-    <div class="sec-label">certificates — 7</div>
+    <div class="sec-label">certificates — 5</div>
     <div class="certs-grid">
 
       <div class="cert">
@@ -634,7 +645,7 @@
         <div class="cert-icon ci-blue">ML</div>
         <div>
           <div class="cert-title">Good AI. Part 1 — Machine Learning</div>
-          <div class="cert-meta">Stepik · 2024</div>
+          <div class="cert-meta">Stepik · 2025</div>
           <a class="cert-link" href="https://drive.google.com/file/d/1jZ_MfRXq5g_gncPrC-ZgDMMGjb_06l7q/view?usp=sharing" target="_blank">view certificate ↗</a>
         </div>
       </div>
@@ -643,26 +654,8 @@
         <div class="cert-icon ci-blue">PT</div>
         <div>
           <div class="cert-title">Good AI. Part 2 — Neural Networks &amp; PyTorch</div>
-          <div class="cert-meta">Stepik · 2024</div>
+          <div class="cert-meta">Stepik · 2025</div>
           <a class="cert-link" href="https://drive.google.com/file/d/1yMMs-B116WJaeK7YTbJnM-JQAGSIoQHN/view?usp=sharing" target="_blank">view certificate ↗</a>
-        </div>
-      </div>
-
-      <div class="cert">
-        <div class="cert-icon ci-amber">PY</div>
-        <div>
-          <div class="cert-title">Good, good Python</div>
-          <div class="cert-meta">Stepik · Balakirev · 2024</div>
-          <a class="cert-link" href="https://drive.google.com/file/d/18USuKdcVi-hfoknyuTvDv-MEPMN5r-Re/view?usp=sharing" target="_blank">view certificate ↗</a>
-        </div>
-      </div>
-
-      <div class="cert">
-        <div class="cert-icon ci-amber">OOP</div>
-        <div>
-          <div class="cert-title">Good, good Python OOP</div>
-          <div class="cert-meta">Stepik · Balakirev · 2024</div>
-          <a class="cert-link" href="https://drive.google.com/file/d/1eDI1A1qZltvKgyE3dY4deR2qr6_S2wQ-/view?usp=sharing" target="_blank">view certificate ↗</a>
         </div>
       </div>
 
@@ -775,6 +768,7 @@
     <div class="sec-label">contact</div>
     <div class="contact-row">
       <div class="ci-item">github <strong>nebula387</strong></div>
+      <div class="ci-item">email <strong>nebula387@gmail.com</strong></div>
       <div class="ci-item">site <strong>grip2peak.com</strong></div>
       <div class="ci-item">timezone <strong>UTC+3</strong></div>
       <div class="ci-item">english <strong>B2</strong></div>
