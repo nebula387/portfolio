@@ -484,8 +484,29 @@
 <div id="projects"></div>
 <section class="sec">
   <div class="wrap">
-    <div class="sec-label">ai agents</div>
+    <div class="sec-label">projects</div>
     <div class="grid2">
+
+      <div class="card">
+        <div class="card-top">
+          <span class="badge b-ml">ML · Forecasting</span>
+          <div class="card-top-right">
+            <div class="live"><div class="live-dot"></div>live</div>
+          </div>
+        </div>
+        <div class="card-title">Weather Forecast Bot</div>
+        <p class="card-desc">XGBoost multi-target model predicting temperature, precipitation, and wind speed for Krasnodar using 20 years of historical data. Production quality gate at MAE &lt; 2°C. Daily Telegram notifications with morning/afternoon/evening breakdowns. Streamlit dashboard with 7-day actuals + forecast overlay. Fully automated via GitHub Actions with hourly data refresh.</p>
+        <div class="metrics">
+          <div><div class="metric-val">&lt;2°C</div><div class="metric-lbl">MAE threshold</div></div>
+          <div><div class="metric-val">20 yr</div><div class="metric-lbl">training data</div></div>
+          <div><div class="metric-val">24 h</div><div class="metric-lbl">forecast horizon</div></div>
+        </div>
+        <div class="pills">
+          <span class="pill">XGBoost</span><span class="pill">Open-Meteo API</span><span class="pill">Streamlit</span>
+          <span class="pill">GitHub Actions</span><span class="pill">Telegram Bot</span><span class="pill">pandas</span>
+        </div>
+        <a class="card-link" href="https://github.com/nebula387/weather-forecast-ml" target="_blank">github.com/nebula387/weather-forecast-ml ↗</a>
+      </div>
 
       <div class="card">
         <div class="card-top">
@@ -524,68 +545,6 @@
           <span class="pill">Llama 4</span><span class="pill">PyMuPDF</span><span class="pill">Tavily</span>
         </div>
         <a class="card-link" href="https://github.com/nebula387/doc-agent" target="_blank">github.com/nebula387/doc-agent ↗</a>
-      </div>
-
-      <div class="card">
-        <div class="card-top">
-          <span class="badge b-voice">Voice Agent</span>
-          <span class="wip">in development</span>
-        </div>
-        <div class="card-title">ScamGuard — AI Call Filter</div>
-        <p class="card-desc">Voice AI agent that screens all incoming calls in real time. Legitimate callers forwarded transparently. Detected scammers are handed to a "confused elderly woman" persona — keeps them occupied up to 10 min without revealing real data. Russian operator setup included.</p>
-        <div class="pills">
-          <span class="pill">Vapi</span><span class="pill">Claude Sonnet</span><span class="pill">ElevenLabs</span>
-          <span class="pill">Node.js</span><span class="pill">Fastify</span><span class="pill">Railway</span>
-        </div>
-        <a class="card-link" href="https://github.com/nebula387/phone_agent" target="_blank">github.com/nebula387/phone_agent ↗</a>
-      </div>
-
-
-    </div>
-  </div>
-</section>
-
-<!-- ── ML Research ── -->
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-label">ml research</div>
-    <div class="grid2">
-
-      <div class="card">
-        <div class="card-top">
-          <span class="badge b-ml">ML · Forecasting</span>
-          <div class="card-top-right">
-            <div class="live"><div class="live-dot"></div>live</div>
-          </div>
-        </div>
-        <div class="card-title">Weather Forecast Bot</div>
-        <p class="card-desc">XGBoost multi-target model predicting temperature, precipitation, and wind speed for Krasnodar using 20 years of historical data. Production quality gate at MAE &lt; 2°C. Daily Telegram notifications with morning/afternoon/evening breakdowns. Streamlit dashboard with 7-day actuals + forecast overlay. Fully automated via GitHub Actions with hourly data refresh.</p>
-        <div class="metrics">
-          <div><div class="metric-val">&lt;2°C</div><div class="metric-lbl">MAE threshold</div></div>
-          <div><div class="metric-val">20 yr</div><div class="metric-lbl">training data</div></div>
-          <div><div class="metric-val">24 h</div><div class="metric-lbl">forecast horizon</div></div>
-        </div>
-        <div class="pills">
-          <span class="pill">XGBoost</span><span class="pill">Open-Meteo API</span><span class="pill">Streamlit</span>
-          <span class="pill">GitHub Actions</span><span class="pill">Telegram Bot</span><span class="pill">pandas</span>
-        </div>
-        <a class="card-link" href="https://github.com/nebula387/weather-forecast-ml" target="_blank">github.com/nebula387/weather-forecast-ml ↗</a>
-      </div>
-
-      <div class="card">
-        <div class="card-top"><span class="badge b-ml">ML · Healthcare</span></div>
-        <div class="card-title">Diabetes Risk Prediction</div>
-        <p class="card-desc">End-to-end screening pipeline with threshold optimization. Prioritized recall to minimize missed diagnoses. Full EDA with Cramér's V analysis, sklearn Pipeline with ColumnTransformer.</p>
-        <div class="metrics">
-          <div><div class="metric-val">0.91</div><div class="metric-lbl">ROC-AUC</div></div>
-          <div><div class="metric-val">0.92</div><div class="metric-lbl">recall</div></div>
-          <div><div class="metric-val">0.90</div><div class="metric-lbl">accuracy</div></div>
-        </div>
-        <div class="pills">
-          <span class="pill">LightGBM</span><span class="pill">scikit-learn</span>
-          <span class="pill">threshold opt.</span><span class="pill">Matplotlib</span>
-        </div>
-        <a class="card-link" href="https://github.com/nebula387/Diabetes_analysis_lightgbm" target="_blank">github.com/nebula387/Diabetes_analysis_lightgbm ↗</a>
       </div>
 
       <div class="card">
