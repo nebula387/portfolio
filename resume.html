@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ivan Snigirev — Resume</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    color: #1a1a2e;
+    background: #fff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 48px;
+  }
+
+  a { color: #2563eb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ── Header ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid #1a1a2e;
+  }
+  .name {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    color: #0f0f1a;
+    margin-bottom: 3px;
+  }
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2563eb;
+    margin-bottom: 8px;
+  }
+  .summary {
+    font-size: 12px;
+    color: #444;
+    max-width: 500px;
+    line-height: 1.65;
+  }
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
+    font-size: 11.5px;
+    color: #555;
+  }
+  .contacts a { color: #2563eb; }
+
+  /* ── Section ── */
+  .sec { margin-bottom: 18px; }
+  .sec-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #888;
+    margin-bottom: 9px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* ── Skills ── */
+  .skills-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .skill-col h4 {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #aaa;
+    margin-bottom: 5px;
+  }
+  .skill-col ul { list-style: none; font-size: 12px; color: #333; line-height: 1.9; }
+
+  /* ── Projects ── */
+  .project { margin-bottom: 13px; }
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+  }
+  .project-name { font-weight: 600; font-size: 13px; }
+  .project-tag { font-size: 10px; color: #2563eb; background: #eff6ff; padding: 2px 7px; border-radius: 3px; }
+  .project-desc { font-size: 12px; color: #444; margin-bottom: 5px; line-height: 1.6; }
+  .project-metrics { font-size: 11px; color: #2563eb; margin-bottom: 4px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 4px; }
+  .pill {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: #f3f4f6;
+    color: #555;
+    border: 1px solid #e5e7eb;
+  }
+  .project-link { font-size: 11px; color: #2563eb; display: block; margin-top: 4px; }
+
+  /* ── Timeline ── */
+  .tl-item { margin-bottom: 11px; }
+  .tl-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+  .tl-role { font-weight: 600; font-size: 13px; }
+  .tl-date { font-size: 11px; color: #888; }
+  .tl-co { font-size: 12px; color: #2563eb; margin-bottom: 3px; }
+  .tl-desc { font-size: 12px; color: #555; line-height: 1.6; }
+
+  /* ── Certs ── */
+  .cert { display: flex; justify-content: space-between; align-items: baseline; padding: 5px 0; border-bottom: 1px solid #f0f0f0; }
+  .cert:last-child { border-bottom: none; }
+  .cert-name { font-size: 12px; }
+  .cert-meta { font-size: 11px; color: #888; white-space: nowrap; margin-left: 10px; }
+
+  /* ── Status bar ── */
+  .status-bar {
+    display: flex;
+    gap: 18px;
+    font-size: 11px;
+    color: #555;
+    padding: 8px 12px;
+    background: #f8faff;
+    border: 1px solid #dbeafe;
+    border-radius: 5px;
+    margin-bottom: 18px;
+  }
+  .status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #22c55e; margin-right: 5px; vertical-align: middle; }
+
+  @media print {
+    body { padding: 28px 36px; }
+    a { color: #1a1a2e; }
+    .status-bar { background: #f8f8f8; border-color: #ccc; }
+    .project-tag { background: #f0f0f0; color: #333; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div>
+    <div class="name">Ivan Snigirev</div>
+    <div class="title">AI &amp; Data Engineer</div>
+    <p class="summary">
+      I turn LLMs, live data, and third-party APIs into working products — travel agents,
+      legal assistants, weather forecasting bots — all running in production.
+      Comfortable with the full stack: AI integration, ML pipelines, Telegram delivery,
+      and Docker deployment. Background in network infrastructure and industrial automation.
+    </p>
+  </div>
+  <div class="contacts">
+    <a href="mailto:nebula387@gmail.com">nebula387@gmail.com</a>
+    <a href="https://github.com/nebula387" target="_blank">github.com/nebula387</a>
+    <a href="http://grip2peak.com" target="_blank">grip2peak.com</a>
+    <span>UTC+3 · Remote only</span>
+    <span>English B2</span>
+  </div>
+</div>
+
+<!-- Status -->
+<div class="status-bar">
+  <span><span class="status-dot"></span>Available for remote work</span>
+  <span>Open to: freelance &amp; full-time remote</span>
+  <span>Format: async-friendly, timezone UTC+3</span>
+</div>
+
+<!-- Skills -->
+<div class="sec">
+  <div class="sec-title">Skills</div>
+  <div class="skills-row">
+    <div class="skill-col">
+      <h4>AI / Agents</h4>
+      <ul>
+        <li>LLM routing</li>
+        <li>AI agent design</li>
+        <li>Vapi / Voice AI</li>
+        <li>OpenRouter</li>
+        <li>Groq Whisper</li>
+        <li>Tavily search</li>
+        <li>aiogram 3</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h4>ML / Data</h4>
+      <ul>
+        <li>XGBoost / LightGBM</li>
+        <li>scikit-learn</li>
+        <li>PyTorch</li>
+        <li>pandas / NumPy</li>
+        <li>EDA</li>
+        <li>SQL / PostgreSQL</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h4>Engineering</h4>
+      <ul>
+        <li>Python OOP</li>
+        <li>FastAPI</li>
+        <li>Node.js / Next.js</li>
+        <li>Docker / Nginx</li>
+        <li>Linux / VPS</li>
+        <li>Redis / Celery</li>
+        <li>Git / GitHub Actions</li>
+      </ul>
+    </div>
+    <div class="skill-col">
+      <h4>Domain</h4>
+      <ul>
+        <li>Network security</li>
+        <li>Telecom / ISP</li>
+        <li>Industrial automation</li>
+        <li>Technical docs</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Projects -->
+<div class="sec">
+  <div class="sec-title">Projects</div>
+
+  <div class="project">
+    <div class="project-top">
+      <span class="project-name">Weather Forecast Bot</span>
+      <span class="project-tag">ML · Forecasting · live</span>
+    </div>
+    <p class="project-desc">XGBoost multi-target model predicting temperature, precipitation, and wind speed for Krasnodar using 20 years of historical data. Production quality gate at MAE &lt; 2°C. Daily Telegram notifications with morning/afternoon/evening breakdowns. Streamlit dashboard with 7-day actuals + forecast overlay. Fully automated via GitHub Actions with hourly data refresh.</p>
+    <div class="project-metrics">MAE &lt; 2°C · 20 yr training data · 24 h forecast horizon</div>
+    <div class="pills">
+      <span class="pill">XGBoost</span><span class="pill">Open-Meteo API</span><span class="pill">Streamlit</span>
+      <span class="pill">GitHub Actions</span><span class="pill">Telegram Bot</span><span class="pill">pandas</span>
+    </div>
+    <a class="project-link" href="https://github.com/nebula387/weather-forecast-ml" target="_blank">github.com/nebula387/weather-forecast-ml</a>
+  </div>
+
+  <div class="project">
+    <div class="project-top">
+      <span class="project-name">Travel Agent</span>
+      <span class="project-tag">Telegram Agent · live</span>
+    </div>
+    <p class="project-desc">AI travel planning bot for budget travelers and digital nomads. Classifies user intent and dispatches specialized sub-agents in parallel: destinations, visas, flights, budgets, itineraries. Interactive Google Maps pins, cost-of-living data for 50+ cities. Production-deployed with Docker + Nginx + SSL, 44 automated tests, zero-downtime deploys.</p>
+    <div class="project-metrics">44 tests · 50+ cities · 0-downtime deploys</div>
+    <div class="pills">
+      <span class="pill">FastAPI</span><span class="pill">Gemini 2.0 Flash</span><span class="pill">PostgreSQL</span>
+      <span class="pill">Redis</span><span class="pill">Celery</span><span class="pill">Google Maps API</span>
+      <span class="pill">Docker</span><span class="pill">aiogram 3</span>
+    </div>
+    <a class="project-link" href="https://github.com/nebula387/travel-agent" target="_blank">github.com/nebula387/travel-agent</a>
+  </div>
+
+  <div class="project">
+    <div class="project-top">
+      <span class="project-name">Doc Agent — Legal Assistant</span>
+      <span class="project-tag">Telegram Agent · live</span>
+    </div>
+    <p class="project-desc">Document analysis agent for legal texts. Accepts PDF, DOCX, TXT (up to 5 files at once), answers questions about content, cross-references with live web search. Auto-fallback across 5 free models. Switchable between fast and deep-reasoning modes.</p>
+    <div class="pills">
+      <span class="pill">aiogram 3</span><span class="pill">OpenRouter</span><span class="pill">Nemotron 120B</span>
+      <span class="pill">Llama 4</span><span class="pill">PyMuPDF</span><span class="pill">Tavily</span>
+    </div>
+    <a class="project-link" href="https://github.com/nebula387/doc-agent" target="_blank">github.com/nebula387/doc-agent</a>
+  </div>
+
+  <div class="project">
+    <div class="project-top">
+      <span class="project-name">GBC Analytics Dashboard</span>
+      <span class="project-tag">Full-Stack · CRM</span>
+    </div>
+    <p class="project-desc">Real-time order analytics dashboard for an e-commerce store. Data synced from RetailCRM every 15 min via cron, stored in Supabase, visualised in Next.js. Large orders trigger Telegram alerts with deduplication.</p>
+    <div class="project-metrics">4 KPI tiles · 15 min sync interval</div>
+    <div class="pills">
+      <span class="pill">Next.js</span><span class="pill">Supabase</span>
+      <span class="pill">RetailCRM API</span><span class="pill">Telegram Bot</span><span class="pill">Vercel</span>
+    </div>
+    <a class="project-link" href="https://github.com/nebula387/retail_crm" target="_blank">github.com/nebula387/retail_crm</a>
+  </div>
+</div>
+
+<!-- Experience -->
+<div class="sec">
+  <div class="sec-title">Experience</div>
+
+  <div class="tl-item">
+    <div class="tl-top">
+      <span class="tl-role">Network Engineer</span>
+      <span class="tl-date">Jun 2024 — present</span>
+    </div>
+    <div class="tl-co">ER-Telecom Holding</div>
+    <p class="tl-desc">Technical operations in large-scale ISP infrastructure. Monitoring and analysis of network performance metrics, cross-team engineering collaboration.</p>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-top">
+      <span class="tl-role">Automation Engineer</span>
+      <span class="tl-date">Nov 2020 — Sep 2023</span>
+    </div>
+    <div class="tl-co">Rosflotservice, Novorossiysk</div>
+    <p class="tl-desc">Programming and configuration of industrial automation and safety systems. Technical documentation and diagnostics.</p>
+  </div>
+</div>
+
+<!-- Education -->
+<div class="sec">
+  <div class="sec-title">Education</div>
+  <div class="tl-item">
+    <div class="tl-top">
+      <span class="tl-role">Data Analyst — Professional Diploma</span>
+      <span class="tl-date">2024</span>
+    </div>
+    <div class="tl-co">Tomsk State University (TSU)</div>
+    <p class="tl-desc">Faculty of Innovative Technologies, data analytics specialization.</p>
+  </div>
+</div>
+
+<!-- Certificates -->
+<div class="sec">
+  <div class="sec-title">Certificates</div>
+  <div class="cert">
+    <span class="cert-name">Introduction to Data Science &amp; ML</span>
+    <span class="cert-meta">Stepik · Bioinformatics Institute · 2024</span>
+  </div>
+  <div class="cert">
+    <span class="cert-name">Good AI. Part 1 — Machine Learning</span>
+    <span class="cert-meta">Stepik · 2025</span>
+  </div>
+  <div class="cert">
+    <span class="cert-name">Good AI. Part 2 — Neural Networks &amp; PyTorch</span>
+    <span class="cert-meta">Stepik · 2025</span>
+  </div>
+  <div class="cert">
+    <span class="cert-name">Interactive SQL Simulator</span>
+    <span class="cert-meta">Stepik · 2024</span>
+  </div>
+  <div class="cert">
+    <span class="cert-name">Critical Thinking</span>
+    <span class="cert-meta">Stepik · 2024</span>
+  </div>
+</div>
+
+</body>
+</html>
